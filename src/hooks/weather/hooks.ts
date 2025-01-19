@@ -7,8 +7,9 @@ export const useWeather = (city: string) => {
     ['weather', city],
     () => fetchWeatherByCity(city),
     {
-      enabled: !!city,
+      enabled: !!city && city.trim() !== '',
       refetchOnWindowFocus: false,
+      retry: false,
     },
   )
 }
