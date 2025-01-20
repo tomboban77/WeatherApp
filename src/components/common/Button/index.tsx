@@ -20,11 +20,12 @@ const SearchButton: React.FC<SearchButtonProps> = ({
       onClick={onClick}
       {...props}
       sx={{
-        bgcolor: 'linear-gradient(to right, #6a11cb, #2575fc)',
+        bgcolor: '#3f355e',
         padding: '12px 24px',
+        borderRadius: '3px',
         fontWeight: 'bold',
         boxShadow: '0px 4px 10px rgba(0,0,0,0.2)',
-        minWidth: '160px',
+        minWidth: '200px',
         transition: 'all 0.3s',
         '&:hover': {
           transform: 'scale(1.05)',

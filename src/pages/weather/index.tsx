@@ -56,12 +56,11 @@ const WeatherPage: React.FC = () => {
         }}
       >
         <Typography
-          variant="h4"
-          component="h1"
           sx={{
+            fontSize: '3rem',
             fontWeight: 'bold',
-            color: '#333',
-            marginBottom: '1.5rem',
+            color: '#15173e',
+            marginBottom: '2.5rem',
           }}
         >
           {LABELS.WEATHER_PAGE.TITLE}
