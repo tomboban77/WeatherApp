@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import { WeatherData } from '../../types/weather'
 import { Box, Grid2 } from '@mui/material'
+import LABELS from 'constants/weather'
 
 interface WeatherCardProps {
   data: WeatherData
@@ -35,7 +36,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ data }) => {
             <img
               src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
               alt={data.weather[0].description}
-              style={{ width: '60px', height: '60px' }}
+              style={{ width: '60px', height: '60px', mixBlendMode: 'screen' }}
             />
             <Typography variant="h2" fontWeight="bold">
               {Math.round(data.main.temp)}°C
@@ -52,7 +53,9 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ data }) => {
               {data.weather[0].description}
             </Typography>
             <Typography sx={{ textTransform: 'capitalize', fontSize: '1rem' }}>
-              Feels like: {Math.round(data.main.feels_like)}°C
+              {LABELS.WEATHER_PAGE.FEELS_LIKE}:{' '}
+              {Math.round(data.main.feels_like)}
+              {LABELS.WEATHER_CARD.TEMPERATURE_UNIT}
             </Typography>
           </Grid2>
         </Box>
@@ -60,19 +63,15 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ data }) => {
           variant="body2"
           sx={{ display: 'flex', justifyContent: 'space-between' }}
         >
-          <span>High: {Math.round(data.main.temp_max)}°</span>
-          <span>Low: {Math.round(data.main.temp_min)}°</span>
+          <span>
+            {' '}
+            {LABELS.WEATHER_PAGE.HIGH}: {Math.round(data.main.temp_max)}°
+          </span>
+          <span>
+            {' '}
+            {LABELS.WEATHER_PAGE.LOW}: {Math.round(data.main.temp_min)}°
+          </span>
         </Typography>
-
-        {/* <Typography variant="h5" component="h2" fontWeight="bold">
-          {data.name}, {data.sys.country}
-        </Typography>
-        <Typography variant="h6" color="textSecondary" mt={1}>
-          {data.main.temp}°C
-        </Typography>
-        <Typography variant="body2" color="text.secondary" mt={1}>
-          {data.weather[0].description}
-        </Typography> */}
       </CardContent>
     </Card>
   )
