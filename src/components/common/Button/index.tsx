@@ -1,12 +1,13 @@
 import React from 'react'
 import Button, { ButtonProps } from '@mui/material/Button'
+import LABELS from 'constants/weather'
 
 interface SearchButtonProps extends ButtonProps {
   label?: string
 }
 
 const SearchButton: React.FC<SearchButtonProps> = ({
-  label = 'Search',
+  label = LABELS.WEATHER_PAGE.SEARCH_BUTTON,
   onClick,
   type = 'submit',
   ...props
