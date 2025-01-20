@@ -27,10 +27,23 @@ const InputField: React.FC<InputFieldProps> = ({
       value={value}
       onChange={onChange}
       fullWidth
+      inputProps={{
+        'aria-label': label || 'Search city',
+      }}
       InputProps={{
         endAdornment: value && (
           <InputAdornment position="end">
-            <IconButton onClick={onClear} edge="end">
+            <IconButton
+              onClick={onClear}
+              edge="end"
+              aria-label="Clear input field"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  onClear()
+                }
+              }}
+            >
               <ClearIcon />
             </IconButton>
           </InputAdornment>

@@ -9,7 +9,6 @@ import InputField from '../../components/common/InputField'
 import SearchButton from '../../components/common/Button'
 import LABELS from 'constants/weather'
 import ErrorComponent from '../../components/error'
-import { Grid2 } from '@mui/material'
 
 const WeatherPage: React.FC = () => {
   const [city, setCity] = useState<string>('')
@@ -30,32 +29,41 @@ const WeatherPage: React.FC = () => {
   }
 
   return (
-    <Grid2
+    <Box
       className="content_container"
       sx={{
-        backgroundImage: 'url(/images/weather_image.jpg)',
+        backgroundImage: 'url(/images/clearnight_large.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         minHeight: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 2,
       }}
     >
       <Box
         sx={{
-          maxWidth: '700px',
-          margin: '0 auto',
-          padding: '5rem',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 3,
-          backgroundColor: 'white',
-          boxShadow: 3,
-          borderRadius: 2,
-          position: 'relative',
-          top: '500px',
+          maxWidth: '800px',
+          width: '100%',
+          backgroundColor: '#fff',
+          backdropFilter: 'blur(10px)',
+          borderRadius: '16px',
+          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
+          padding: '2rem',
+          textAlign: 'center',
         }}
       >
-        <Typography variant="h4" component="h1" textAlign="center" gutterBottom>
+        <Typography
+          variant="h4"
+          component="h1"
+          sx={{
+            fontWeight: 'bold',
+            color: '#333',
+            marginBottom: '1.5rem',
+          }}
+        >
           {LABELS.WEATHER_PAGE.TITLE}
         </Typography>
 
@@ -64,9 +72,9 @@ const WeatherPage: React.FC = () => {
           onSubmit={handleSubmit(handleSearch)}
           sx={{
             display: 'flex',
-            flexDirection: 'row',
             gap: 2,
-            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '2rem',
           }}
         >
           <Controller
@@ -94,7 +102,7 @@ const WeatherPage: React.FC = () => {
         {error && <ErrorComponent message={error.message} severity="error" />}
         {data && <WeatherCard data={data} />}
       </Box>
-    </Grid2>
+    </Box>
   )
 }
 

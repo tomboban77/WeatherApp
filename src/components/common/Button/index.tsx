@@ -24,6 +24,7 @@ const SearchButton: React.FC<SearchButtonProps> = ({
         padding: '12px 24px',
         fontWeight: 'bold',
         boxShadow: '0px 4px 10px rgba(0,0,0,0.2)',
+        minWidth: '160px',
         transition: 'all 0.3s',
         '&:hover': {
           transform: 'scale(1.05)',
